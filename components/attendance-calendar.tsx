@@ -19,7 +19,7 @@ interface AttendanceCalendarProps {
 export function AttendanceCalendar({ setAlert }: AttendanceCalendarProps) {
   const [isCheckedIn, setIsCheckedIn] = useState(false)
   const [attendanceRecords, setAttendanceRecords] = useState<AttendanceRecord[]>([])
-  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [currentMonth] = useState(new Date())
 
   useEffect(() => {
     // Initialize mock data
@@ -79,7 +79,7 @@ export function AttendanceCalendar({ setAlert }: AttendanceCalendarProps) {
     )
     
     let currentWeek = []
-    let firstWeekDay = firstDay.getDay() || 7
+    const firstWeekDay = firstDay.getDay() || 7
     
     for (let i = 1; i < firstWeekDay; i++) {
       currentWeek.push(<div key={`empty-${i}`} className="h-24 bg-gray-50 rounded-lg" />)
